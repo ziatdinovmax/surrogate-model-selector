@@ -1,0 +1,143 @@
+.container {
+  width: 100%;
+  padding: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+
+h2 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.control-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control-header label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.value {
+  color: #666;
+  margin-left: 8px;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.recommendations {
+  margin-top: 32px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.models {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.model-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.model-content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.model-info {
+  flex: 1;
+}
+
+.model-info h4 {
+  font-size: 16px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.best-match {
+  background: #dcfce7;
+  color: #166534;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.model-info p {
+  color: #666;
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+.ratings {
+  display: flex;
+  gap: 16px;
+  color: #666;
+  font-size: 12px;
+}
+
+.score {
+  text-align: right;
+}
+
+.score-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.score-label {
+  color: #666;
+  font-size: 14px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
