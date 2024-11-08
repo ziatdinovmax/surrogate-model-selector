@@ -25,7 +25,7 @@ const SurrogateModelSelector = () => {
       description: 'Best for low-dimensional, smooth functions with small datasets',
       ratings: {
         dimensionality: 2,
-        latency: 3,
+        latency: 2,
         smoothness: 8
       },
       color: '#3b82f6'
@@ -35,7 +35,7 @@ const SurrogateModelSelector = () => {
       description: 'Handles high-D data and non-stationary patterns well',
       ratings: {
         dimensionality: 6,
-        latency: 7,
+        latency: 4,
         smoothness: 5
       },
       color: '#22c55e'
@@ -55,7 +55,7 @@ const SurrogateModelSelector = () => {
       description: 'Balance between computation and uncertainty estimation',
       ratings: {
         dimensionality: 9,
-        latency: 5,
+        latency: 6,
         smoothness: 2
       },
       color: '#f97316'
