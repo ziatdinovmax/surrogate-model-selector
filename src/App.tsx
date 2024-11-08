@@ -25,8 +25,8 @@ const SurrogateModelSelector = () => {
       description: 'Best for low-dimensional, smooth functions with small datasets',
       ratings: {
         dimensionality: 2,
-        latency: 4,
-        smoothness: 9
+        latency: 3,
+        smoothness: 7
       },
       color: '#3b82f6'
     },
@@ -35,8 +35,8 @@ const SurrogateModelSelector = () => {
       description: 'Handles high-D data and non-stationary patterns well',
       ratings: {
         dimensionality: 6,
-        latency: 5,
-        smoothness: 7
+        latency: 7,
+        smoothness: 4
       },
       color: '#22c55e'
     },
@@ -45,8 +45,8 @@ const SurrogateModelSelector = () => {
       description: 'Flexible architecture but computationally expensive',
       ratings: {
         dimensionality: 7,
-        latency: 9,
-        smoothness: 4
+        latency: 8,
+        smoothness: 3
       },
       color: '#a855f7'
     },
@@ -55,8 +55,8 @@ const SurrogateModelSelector = () => {
       description: 'Balance between computation and uncertainty estimation',
       ratings: {
         dimensionality: 9,
-        latency: 7,
-        smoothness: 3
+        latency: 5,
+        smoothness: 2
       },
       color: '#f97316'
     }
