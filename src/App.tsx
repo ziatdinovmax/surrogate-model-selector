@@ -26,7 +26,7 @@ const SurrogateModelSelector = () => {
       ratings: {
         dimensionality: 2,
         latency: 3,
-        smoothness: 7
+        smoothness: 8
       },
       color: '#3b82f6'
     },
@@ -36,7 +36,7 @@ const SurrogateModelSelector = () => {
       ratings: {
         dimensionality: 6,
         latency: 7,
-        smoothness: 4
+        smoothness: 5
       },
       color: '#22c55e'
     },
