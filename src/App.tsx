@@ -152,11 +152,6 @@ const SurrogateModelSelector = () => {
                           {index === 0 && <span className="best-match">Best Match</span>}
                         </h4>
                         <p>{model.description}</p>
-                        <div className="ratings">
-                          <span>Dimensionality: {model.ratings.dimensionality}/9</span>
-                          <span>Latency: {model.ratings.latency}/9</span>
-                          <span>Smoothness: {model.ratings.smoothness}/9</span>
-                        </div>
                       </div>
                       <div className="score">
                         <div className="score-value">{(score * 100).toFixed(0)}%</div>
