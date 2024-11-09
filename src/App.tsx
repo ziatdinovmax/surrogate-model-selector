@@ -69,8 +69,8 @@ const SurrogateModelSelector = () => {
     
     const weights = {
       dimensionality: 0.4,  // Higher weight as it's often a hard constraint
-      latency: 0.3,
-      smoothness: 0.3
+      latency: 0.25,
+      smoothness: 0.35
     };
     
     const dimScore = 9 - Math.abs(model.ratings.dimensionality - parameterNeed);
