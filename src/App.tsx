@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './styles.css';
 
 // Define interfaces for our data structures
 interface ModelRatings {
