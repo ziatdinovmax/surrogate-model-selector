@@ -67,11 +67,21 @@ const SurrogateModelSelector = () => {
     const latencyNeed = (latency / 100) * 9;
     const smoothnessNeed = (smoothness / 100) * 9;
     
+    const weights = {
+      dimensionality: 0.4,  // Higher weight as it's often a hard constraint
+      latency: 0.35,        // Important for active learning
+      smoothness: 0.25      // Often more flexible
+    };
+    
     const dimScore = 9 - Math.abs(model.ratings.dimensionality - parameterNeed);
     const latScore = 9 - Math.abs(model.ratings.latency - latencyNeed);
     const smoothScore = 9 - Math.abs(model.ratings.smoothness - smoothnessNeed);
     
-    return (dimScore + latScore + smoothScore) / 27;
+    return (
+      (dimScore * weights.dimensionality) + 
+      (latScore * weights.latency) + 
+      (smoothScore * weights.smoothness)
+    ) / 9;
   };
 
   return (
