@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const SurrogateModelSelector = () => {
-  const [parameters, setParameters] = useState(5);
-  const [latency, setLatency] = useState(50);
-  const [smoothness, setSmoothnessReq] = useState(50);
+// Define interfaces for our data structures
+interface ModelRatings {
+  dimensionality: number;
+  latency: number;
+  smoothness: number;
+}
 
-  const models = [
+interface Model {
+  name: string;
+  description: string;
+  ratings: ModelRatings;
+  color: string;
+}
+
+const SurrogateModelSelector: React.FC = () => {
+  const [parameters, setParameters] = useState<number>(5);
+  const [latency, setLatency] = useState<number>(50);
+  const [smoothness, setSmoothnessReq] = useState<number>(50);
+
+  const models: Model[] = [
     {
       name: 'Gaussian Process (GP)',
       description: 'Best for low-dimensional, smooth functions with small datasets',
@@ -48,7 +62,7 @@ const SurrogateModelSelector = () => {
     }
   ];
 
-  const calculateModelScore = (model) => {
+  const calculateModelScore = (model: Model): number => {
     const parameterNeed = (parameters / 10) * 9;
     const latencyNeed = (latency / 100) * 9;
     const smoothnessNeed = (smoothness / 100) * 9;
