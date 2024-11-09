@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
+interface ModelRatings {
+  dimensionality: number;
+  latency: number;
+  smoothness: number;
+}
+
+interface Model {
+  name: string;
+  description: string;
+  ratings: ModelRatings;
+  color: string;
+}
 
 const SurrogateModelSelector = () => {
   const [parameters, setParameters] = useState(5);
   const [latency, setLatency] = useState(50);
   const [smoothness, setSmoothnessReq] = useState(50);
 
-  const models = [
+  const models: Model[] = [
     {
       name: 'Gaussian Process (GP)',
       description: 'Best for low-dimensional, smooth functions with small datasets',
@@ -48,7 +61,7 @@ const SurrogateModelSelector = () => {
     }
   ];
 
-  const calculateModelScore = (model) => {
+  const calculateModelScore = (model: Model): number => {
     const parameterNeed = (parameters / 10) * 9;
     const latencyNeed = (latency / 100) * 9;
     const smoothnessNeed = (smoothness / 100) * 9;
@@ -79,7 +92,7 @@ const SurrogateModelSelector = () => {
     ) / 9;
   };
 
-  const getDimensionalityLabel = (value) => {
+  const getDimensionalityLabel = (value: number): string => {
     if (value <= 3) return 'Low-dimensional';
     if (value <= 6) return 'Medium-dimensional';
     return 'High-dimensional';
