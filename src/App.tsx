@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './styles.css';
 
-// Define interfaces for our data structures
 interface ModelRatings {
   dimensionality: number;
   latency: number;
@@ -15,10 +14,10 @@ interface Model {
   color: string;
 }
 
-const SurrogateModelSelector: React.FC = () => {
-  const [parameters, setParameters] = useState<number>(5);
-  const [latency, setLatency] = useState<number>(50);
-  const [smoothness, setSmoothnessReq] = useState<number>(50);
+const SurrogateModelSelector = () => {
+  const [parameters, setParameters] = useState(5);
+  const [latency, setLatency] = useState(50);
+  const [smoothness, setSmoothnessReq] = useState(50);
 
   const models: Model[] = [
     {
@@ -95,108 +94,103 @@ const SurrogateModelSelector: React.FC = () => {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto bg-white rounded-xl shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Surrogate Model Selection Guide</h2>
-      <p className="text-gray-600 mb-6">
-        Adjust the sliders to match your requirements and see which model best fits your needs
-      </p>
+    <div className="container">
+      <div className="card">
+        <h2>Surrogate Model Selection Guide</h2>
+        <p className="description">
+          Adjust the sliders to match your requirements and see which model best fits your needs
+        </p>
 
-      <div className="space-y-6 mb-8">
-        <div>
-          <div className="flex justify-between mb-2">
-            <label className="font-medium">Dimensionality Requirements</label>
-            <div>
-              <span className="mr-2">{parameters <= 3 ? 'Low' : parameters <= 6 ? 'Medium' : 'High'}</span>
-              <span className="text-gray-500">({parameters}/10)</span>
-            </div>
-          </div>
-          <input
-            type="range"
-            value={parameters}
-            onChange={(e) => setParameters(Number(e.target.value))}
-            min="1"
-            max="10"
-            step="1"
-            className="w-full"
-          />
-        </div>
-
-        <div>
-          <div className="flex justify-between mb-2">
-            <label className="font-medium">Latency Tolerance</label>
-            <div>
-              <span className="mr-2">{latency <= 33 ? 'Low' : latency <= 66 ? 'Medium' : 'High'}</span>
-              <span className="text-gray-500">({Math.round(latency)}%)</span>
-            </div>
-          </div>
-          <input
-            type="range"
-            value={latency}
-            onChange={(e) => setLatency(Number(e.target.value))}
-            min="1"
-            max="100"
-            className="w-full"
-          />
-        </div>
-
-        <div>
-          <div className="flex justify-between mb-2">
-            <label className="font-medium">Smoothness Requirements</label>
-            <div>
-              <span className="mr-2">{smoothness <= 33 ? 'Low' : smoothness <= 66 ? 'Medium' : 'High'}</span>
-              <span className="text-gray-500">({Math.round(smoothness)}%)</span>
-            </div>
-          </div>
-          <input
-            type="range"
-            value={smoothness}
-            onChange={(e) => setSmoothnessReq(Number(e.target.value))}
-            min="1"
-            max="100"
-            className="w-full"
-          />
-        </div>
-      </div>
-
-      <h3 className="text-xl font-bold mb-4">Model Recommendations</h3>
-      <div className="space-y-4">
-        {models
-          .sort((a, b) => calculateModelScore(b) - calculateModelScore(a))
-          .map((model, index) => {
-            const score = calculateModelScore(model);
-            return (
-              <div key={model.name} className="bg-gray-50 p-4 rounded-lg">
-                <div className="flex justify-between mb-2">
-                  <div>
-                    <h4 className="font-bold flex items-center">
-                      {model.name}
-                      {index === 0 && (
-                        <span className="ml-2 px-2 py-1 bg-green-100 text-green-800 text-xs rounded">
-                          Best Match
-                        </span>
-                      )}
-                    </h4>
-                    <p className="text-gray-600 text-sm">{model.description}</p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold" style={{ color: model.color }}>
-                      {(score * 100).toFixed(0)}%
-                    </div>
-                    <div className="text-gray-500 text-sm">Match Score</div>
-                  </div>
-                </div>
-                <div className="h-2 bg-gray-200 rounded overflow-hidden">
-                  <div
-                    className="h-full transition-all duration-300"
-                    style={{ 
-                      width: `${score * 100}%`,
-                      backgroundColor: model.color
-                    }}
-                  />
-                </div>
+        <div className="controls">
+          <div className="control-group">
+            <div className="control-header">
+              <label>Dimensionality Requirements</label>
+              <div>
+                <span>{parameters <= 3 ? 'Low' : parameters <= 6 ? 'Medium' : 'High'}</span>
+                <span className="value">({parameters}/10)</span>
               </div>
-            );
-          })}
+            </div>
+            <input
+              type="range"
+              value={parameters}
+              onChange={(e) => setParameters(Number(e.target.value))}
+              min="1"
+              max="10"
+              step="1"
+            />
+          </div>
+
+          <div className="control-group">
+            <div className="control-header">
+              <label>Latency Tolerance</label>
+              <div>
+                <span>{latency <= 33 ? 'Low' : latency <= 66 ? 'Medium' : 'High'}</span>
+                <span className="value">({Math.round(latency)}%)</span>
+              </div>
+            </div>
+            <input
+              type="range"
+              value={latency}
+              onChange={(e) => setLatency(Number(e.target.value))}
+              min="1"
+              max="100"
+            />
+          </div>
+
+          <div className="control-group">
+            <div className="control-header">
+              <label>Smoothness Requirements</label>
+              <div>
+                <span>{smoothness <= 33 ? 'Low' : smoothness <= 66 ? 'Medium' : 'High'}</span>
+                <span className="value">({Math.round(smoothness)}%)</span>
+              </div>
+            </div>
+            <input
+              type="range"
+              value={smoothness}
+              onChange={(e) => setSmoothnessReq(Number(e.target.value))}
+              min="1"
+              max="100"
+            />
+          </div>
+        </div>
+
+        <div className="recommendations">
+          <h3>Model Recommendations</h3>
+          <div className="models">
+            {models
+              .sort((a, b) => calculateModelScore(b) - calculateModelScore(a))
+              .map((model, index) => {
+                const score = calculateModelScore(model);
+                return (
+                  <div key={model.name} className="model-card">
+                    <div className="model-content">
+                      <div className="model-info">
+                        <h4>
+                          {model.name}
+                          {index === 0 && <span className="best-match">Best Match</span>}
+                        </h4>
+                        <p>{model.description}</p>
+                      </div>
+                      <div className="score">
+                        <div className="score-value">{(score * 100).toFixed(0)}%</div>
+                        <div className="score-label">Match Score</div>
+                      </div>
+                    </div>
+                    <div className="progress-bar">
+                      <div
+                        className="progress"
+                        style={{ 
+                          width: `${score * 100}%`,
+                          backgroundColor: model.color
+                        }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
       </div>
     </div>
   );
