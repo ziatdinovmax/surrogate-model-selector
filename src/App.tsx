@@ -107,7 +107,6 @@ const SurrogateModelSelector = () => {
               <label>Dimensionality Requirements</label>
               <div>
                 <span>{parameters <= 3 ? 'Low' : parameters <= 6 ? 'Medium' : 'High'}</span>
-                <span className="value">({parameters}/10)</span>
               </div>
             </div>
             <input
