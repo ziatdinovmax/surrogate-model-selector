@@ -69,8 +69,8 @@ const SurrogateModelSelector = () => {
     
     const weights = {
       dimensionality: 0.4,  // Higher weight as it's often a hard constraint
-      latency: 0.35,        // Important for active learning
-      smoothness: 0.30      // Often more flexible
+      latency: 0.35,
+      smoothness: 0.35
     };
     
     const dimScore = 9 - Math.abs(model.ratings.dimensionality - parameterNeed);
