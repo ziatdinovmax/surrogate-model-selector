@@ -68,8 +68,8 @@ const SurrogateModelSelector = () => {
     const smoothnessNeed = (smoothness / 100) * 9;
     
     const weights = {
-      dimensionality: 0.4,  // Higher weight as it's often a hard constraint
-      latency: 0.25,
+      dimensionality: 0.35,  // Higher weight as it's often a hard constraint
+      latency: 0.30,
       smoothness: 0.35
     };
     
