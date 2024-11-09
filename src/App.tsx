@@ -1,24 +1,11 @@
-import { useState } from 'react';
-
-interface ModelRatings {
-  dimensionality: number;
-  latency: number;
-  smoothness: number;
-}
-
-interface Model {
-  name: string;
-  description: string;
-  ratings: ModelRatings;
-  color: string;
-}
+import React, { useState } from 'react';
 
 const SurrogateModelSelector = () => {
   const [parameters, setParameters] = useState(5);
   const [latency, setLatency] = useState(50);
   const [smoothness, setSmoothnessReq] = useState(50);
 
-  const models: Model[] = [
+  const models = [
     {
       name: 'Gaussian Process (GP)',
       description: 'Best for low-dimensional, smooth functions with small datasets',
@@ -61,7 +48,7 @@ const SurrogateModelSelector = () => {
     }
   ];
 
-  const calculateModelScore = (model: Model): number => {
+  const calculateModelScore = (model) => {
     const parameterNeed = (parameters / 10) * 9;
     const latencyNeed = (latency / 100) * 9;
     const smoothnessNeed = (smoothness / 100) * 9;
@@ -92,20 +79,21 @@ const SurrogateModelSelector = () => {
     ) / 9;
   };
 
-  const getDimensionalityLabel = (value: number): string => {
-    if (value <= 3) return 'Low-dimensional';
-    if (value <= 6) return 'Medium-dimensional';
-    return 'High-dimensional';
-  };
-
   return (
     <div className="p-6 max-w-4xl mx-auto bg-white rounded-xl shadow-md">
       <h2 className="text-2xl font-bold mb-4">Surrogate Model Selection Guide</h2>
+      <p className="text-gray-600 mb-6">
+        Adjust the sliders to match your requirements and see which model best fits your needs
+      </p>
+
       <div className="space-y-6 mb-8">
         <div>
           <div className="flex justify-between mb-2">
-            <label className="font-medium">Input Dimensionality</label>
-            <span className="mr-2">{getDimensionalityLabel(parameters)}</span>
+            <label className="font-medium">Dimensionality Requirements</label>
+            <div>
+              <span className="mr-2">{parameters <= 3 ? 'Low' : parameters <= 6 ? 'Medium' : 'High'}</span>
+              <span className="text-gray-500">({parameters}/10)</span>
+            </div>
           </div>
           <input
             type="range"
@@ -116,17 +104,13 @@ const SurrogateModelSelector = () => {
             step="1"
             className="w-full"
           />
-          <div className="flex justify-between text-xs text-gray-500 mt-1">
-            <span>Low-dimensional</span>
-            <span>High-dimensional</span>
-          </div>
         </div>
 
         <div>
           <div className="flex justify-between mb-2">
             <label className="font-medium">Latency Tolerance</label>
             <div>
-              <span className="mr-2">{latency <= 33 ? 'Fast needed' : latency <= 66 ? 'Moderate' : 'Can be slow'}</span>
+              <span className="mr-2">{latency <= 33 ? 'Low' : latency <= 66 ? 'Medium' : 'High'}</span>
               <span className="text-gray-500">({Math.round(latency)}%)</span>
             </div>
           </div>
@@ -142,9 +126,9 @@ const SurrogateModelSelector = () => {
 
         <div>
           <div className="flex justify-between mb-2">
-            <label className="font-medium">Function Smoothness</label>
+            <label className="font-medium">Smoothness Requirements</label>
             <div>
-              <span className="mr-2">{smoothness <= 33 ? 'Non-smooth' : smoothness <= 66 ? 'Moderate' : 'Very smooth'}</span>
+              <span className="mr-2">{smoothness <= 33 ? 'Low' : smoothness <= 66 ? 'Medium' : 'High'}</span>
               <span className="text-gray-500">({Math.round(smoothness)}%)</span>
             </div>
           </div>
