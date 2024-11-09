@@ -104,7 +104,7 @@ const SurrogateModelSelector = () => {
         <div className="controls">
           <div className="control-group">
             <div className="control-header">
-              <label>Dimensionality Requirements</label>
+              <label>Input Dimensionality</label>
               <div>
                 <span>{parameters <= 3 ? 'Low' : parameters <= 6 ? 'Medium' : 'High'}</span>
               </div>
