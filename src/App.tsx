@@ -98,7 +98,7 @@ const SurrogateModelSelector = () => {
       <div className="card">
         <h2>Surrogate Model Selection Guide</h2>
         <p className="description">
-          Adjust the sliders to match your requirements and see which model best fits your needs
+          Note: It reflects typical behaviors based on active learning requirements, like training time per iteration, but model performance can vary significantly based on implementation details, hyperparameter tuning, and specific problem characteristics.
         </p>
 
         <div className="controls">
